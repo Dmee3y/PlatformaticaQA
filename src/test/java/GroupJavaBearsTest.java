@@ -126,4 +126,25 @@ public class GroupJavaBearsTest extends BaseTest {
         Assert.assertEquals(search_result.getText(), "SEARCH RESULTS");
     }
 
+    @Test
+    public void bogdanQA() throws InterruptedException {
+        WebDriver browser = getDriver();
+        browser.get("https://en.wikipedia.org/wiki/Main_Page");
+
+        WebElement button = browser.findElement(By.xpath("//li[@id='ca-view']/a[contains(text(),'Read')]"));
+        Thread.sleep(3000);
+        Assert.assertEquals(button.getText(), "Read");
+    }
+    
+    @Test
+    public void farizA() {
+        WebDriver driver = getDriver();
+        driver.get("https://id.atlassian.com/signup?application=bitbucket&continue=https%3A//" +
+                "bitbucket.org/account/signin/%3Foptintocst%3D1%26next%3D/%3Faidsignup%3D1");
+
+        WebElement signUpButton = driver.findElement(By.xpath("//button[@id='signup-submit']"));
+        signUpButton.click();
+
+        Assert.assertTrue(driver.findElement(By.xpath("(//span[@aria-label='warning'])[1]")).isDisplayed());
+    }
 }
