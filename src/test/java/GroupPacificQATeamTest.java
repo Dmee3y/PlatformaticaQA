@@ -174,13 +174,14 @@ public class GroupPacificQATeamTest extends BaseTest {
     }
 
     @Test
-    public void maxBurdinCodecademy() {
+    public void maxBurdinCodecademy() throws InterruptedException {
 
         WebDriver browser = getDriver();
         browser.get("https://www.codecademy.com/");
 
         WebElement logIn = browser.findElement(By.xpath("(//a[@data-testid = 'header-sign-in'])[1]"));
         logIn.click();
+        Thread.sleep(1000);
 
         WebElement userNameField = browser.findElement(By.xpath("//input[@id='user_login']"));
         userNameField.sendKeys("Test_User_123");
