@@ -9,10 +9,6 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-@Ignore
 public class GroupJavaBearsTest extends BaseTest {
 
     @Test
@@ -28,7 +24,7 @@ public class GroupJavaBearsTest extends BaseTest {
     }
 
     @Test
-    public void Alex_Mack() throws InterruptedException {
+    public void Alex_Mack() {
 
         WebDriver driver = getDriver();
         driver.get("https://en.wikipedia.org/wiki/Golden_Gate");
@@ -129,6 +125,41 @@ public class GroupJavaBearsTest extends BaseTest {
         Assert.assertEquals(search_result.getText(), "SEARCH RESULTS");
     }
 
+    @Ignore
+    @Test
+    public void olgaV1() {
+
+        WebDriver browser = getDriver();
+        browser.get("https://www.guru99.com/introduction-to-selenium.html");
+
+        WebElement seleniumLink2 = browser.findElement(By.xpath("//a[contains(text(),'Birth of Selenium 2')]"));
+        seleniumLink2.click();
+
+        Assert.assertEquals(browser.getCurrentUrl(), "https://www.guru99.com/introduction-to-selenium.html#8");
+    }
+
+    @Ignore
+    @Test
+    public void olgaV2() {
+
+        WebDriver browser = getDriver();
+        browser.get("https://www.recreation.gov/");
+
+        browser.findElement(By.xpath("//div[@class='nav-links-wrap']/a[1]")).click();
+        Assert.assertEquals(browser.getCurrentUrl(), "https://www.recreation.gov/whats-new");
+    }
+
+    @Test
+    public void alexanderDemidionok(){
+
+        WebDriver driver = getDriver();
+        driver.get("https://github.com/assemblyad");
+
+        WebElement homePage = driver.findElement(By.xpath("//a[@href='https://github.com/']"));
+        homePage.click();
+        Assert.assertEquals(getDriver().getCurrentUrl(),"https://github.com/");
+    }
+
     @Test
     public void bogdanQA() throws InterruptedException {
         WebDriver browser = getDriver();
@@ -138,7 +169,7 @@ public class GroupJavaBearsTest extends BaseTest {
         Thread.sleep(3000);
         Assert.assertEquals(button.getText(), "Read");
     }
-    
+
     @Test
     public void farizA() {
         WebDriver driver = getDriver();
