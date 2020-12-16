@@ -62,9 +62,9 @@ public class EntityFieldsTest extends BaseTest {
                 if (isTitleFound(title)) {
                     titleFound = true;
                     break;
-                    }
+                }
                 List<WebElement> paginationButtons = driver.findElements(By.cssSelector("a.page-link"));
-                WebElement paginationNext = paginationButtons.get(paginationButtons.size() -1);
+                WebElement paginationNext = paginationButtons.get(paginationButtons.size() - 1);
                 paginationNext.click();
                 WebElement paginationFirstIndexWe = driver.findElements(By.cssSelector("a.page-link")).get(1);
                 String paginationFirstIndex = paginationFirstIndexWe.getText();
@@ -119,5 +119,28 @@ public class EntityFieldsTest extends BaseTest {
 
     private WebDriverWait getWait(int timeoutSecond) {
         return new WebDriverWait(getDriver(), timeoutSecond);
+    }
+
+
+    @Test
+    public void deleteRecord() throws InterruptedException {
+    WebDriver browser = getDriver();
+    browser.get("https://ref.eteam.work");
+    WebElement login = browser.findElement(By.xpath("//input[@name='login_name']"));
+    login.sendKeys("user1@tester.com");
+    WebElement password = browser.findElement(By.xpath("//input[@name='password']"));
+    password.sendKeys("ah1QNmgkEO");
+    WebElement button = browser.findElement(By.xpath("//button[text()='Sign in']"));
+    button.click();
+    WebElement fields = browser.findElement(By.xpath("//li[@id='pa-menu-item-45']"));
+    fields.click();
+    WebElement record = browser.findElement(By.xpath("//tbody/tr[2]"));
+    WebElement dropdowButton = browser.findElement(By.xpath("//tbody/tr[2]/td[11]/div[1]"));
+    dropdowButton.click();
+    WebElement deleteRecord = browser.findElement(By.xpath("//tbody/tr[2]/td[11]/div[1]/ul[1]/li[3]"));
+    deleteRecord.click();
+    WebElement recycleBin = browser.findElement(By.xpath("//div//li[@class='nav-item']"));
+    recycleBin.click();
+    Assert.assertEquals(browser.getCurrentUrl(), "https://ref.eteam.work/index.php?action=recycle_bin");
     }
 }
