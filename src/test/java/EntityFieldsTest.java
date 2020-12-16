@@ -278,4 +278,39 @@ public class EntityFieldsTest extends BaseTest {
 
         Assert.assertTrue(error.isDisplayed());
     }
+
+    @Test
+    public void fieldInputNewRecordTest() throws InterruptedException {
+
+        final String title = "KyKy";
+        final String comments = "Good";
+        final int number = 555;
+        final double decimal = 555.33;
+
+        WebDriver driver = getDriver();
+        driver.get("https://ref.eteam.work");
+        ProjectUtils.login(driver, "user1@tester.com", "ah1QNmgkEO");
+
+        WebElement sideBarField = driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/ul[1]/li[4]/a[1]/p[1]"));
+        sideBarField.click();
+
+        WebElement buttonField = driver.findElement(By.xpath("//i[contains(text(),'create_new_folder')]"));
+        buttonField.click();
+
+        WebElement titleInput = driver.findElement(By.xpath("//input[@id='title']"));
+        titleInput.clear();
+        titleInput.sendKeys(title);
+
+        WebElement commentsInput = driver.findElement(By.xpath("//textarea[@id='comments']"));
+        commentsInput.clear();
+        commentsInput.sendKeys(comments);
+
+        WebElement numberInput = driver.findElement(By.xpath("//input[@id='int']"));
+        numberInput.clear();
+        numberInput.sendKeys(String.valueOf(number));
+
+        WebElement decimalInput = driver.findElement(By.xpath("//input[@id='decimal']"));
+        decimalInput.clear();
+        decimalInput.sendKeys(String.valueOf(decimal));
+    }
 }
