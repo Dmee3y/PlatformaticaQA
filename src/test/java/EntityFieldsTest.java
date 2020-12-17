@@ -293,7 +293,7 @@ public class EntityFieldsTest extends BaseTest {
 
         WebDriver driver = getDriver();
         driver.get("https://ref.eteam.work");
-        ProjectUtils.login(driver, "user1@tester.com", "ah1QNmgkEO");
+        ProjectUtils.login(driver, "user142@tester.com", "ymEDvCl2fG");
 
         WebElement sideBarField = driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/ul[1]/li[4]/a[1]/p[1]"));
         sideBarField.click();
@@ -316,5 +316,10 @@ public class EntityFieldsTest extends BaseTest {
         WebElement decimalInput = driver.findElement(By.xpath("//input[@id='decimal']"));
         decimalInput.clear();
         decimalInput.sendKeys(String.valueOf(decimal));
+
+        WebElement saveButton = driver.findElement(By.xpath("//button[@id='pa-entity-form-save-btn']"));
+        ProjectUtils.click(driver, saveButton);
+
+        Assert.assertEquals(driver.getCurrentUrl(),"https://ref.eteam.work/index.php?action=action_list&entity_id=5&filter");
     }
 }
