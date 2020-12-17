@@ -292,8 +292,7 @@ public class EntityFieldsTest extends BaseTest {
         final double decimal = 555.33;
 
         WebDriver driver = getDriver();
-        driver.get("https://ref.eteam.work");
-        ProjectUtils.login(driver, "user142@tester.com", "ymEDvCl2fG");
+        ProjectUtils.loginProcedure(driver);
 
         WebElement sideBarField = driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/ul[1]/li[4]/a[1]/p[1]"));
         sideBarField.click();
