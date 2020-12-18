@@ -11,8 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EntityBoardDeleteTest extends BaseTest {
 
     @Test
-    public void newBoardRecordCreation() throws InterruptedException {
-        final String text = "kg-" + UUID.randomUUID().toString();
+    public void newBoardRecordCreation() {
+        final String text = UUID.randomUUID().toString();
         final int number = 320;
         final double decimal = 0.41;
         final String status = "Pending";
