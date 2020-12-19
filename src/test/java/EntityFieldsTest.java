@@ -12,7 +12,10 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 import runner.BaseTest;
 import runner.ProjectUtils;
+import runner.type.Run;
+import runner.type.RunType;
 
+@Run(run = RunType.Multiple)
 public class EntityFieldsTest extends BaseTest {
 
     @Test
@@ -285,7 +288,7 @@ public class EntityFieldsTest extends BaseTest {
     }
 
     @Test
-    public void fieldInputNewRecordTest() throws InterruptedException {
+    public void fieldInputNewRecordTest() {
 
         final String title = "KyKy";
         final String comments = "Good";
@@ -293,7 +296,6 @@ public class EntityFieldsTest extends BaseTest {
         final double decimal = 555.33;
 
         WebDriver driver = getDriver();
-        ProjectUtils.loginProcedure(driver);
 
         WebElement sideBarField = driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/ul[1]/li[4]/a[1]/p[1]"));
         sideBarField.click();
@@ -323,8 +325,7 @@ public class EntityFieldsTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(),"https://ref.eteam.work/index.php?action=action_list&entity_id=5&filter");
     }
 
-    @Ignore
-    @Test
+    @Test(dependsOnMethods = "fieldInputNewRecordTest")
     public void fieldsEditTest() {
 
         final String newTitle = "Ky";
@@ -333,7 +334,6 @@ public class EntityFieldsTest extends BaseTest {
         final double newDecimal = 222.33;
 
         WebDriver driver = getDriver();
-        ProjectUtils.loginProcedure(driver);
 
         WebElement sideBarField = driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/ul[1]/li[4]/a[1]/p[1]"));
         sideBarField.click();
