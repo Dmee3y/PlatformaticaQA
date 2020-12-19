@@ -2,23 +2,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 import runner.ProjectUtils;
+import runner.type.Run;
+import runner.type.RunType;
 
 import java.util.List;
 
+@Run(run= RunType.Multiple)
 public class EntityArithmeticFunctionTest extends BaseTest {
-
-    public void preconditions(WebDriver driver) {
-
-        driver.get("https://ref.eteam.work/");
-
-        ProjectUtils.login(driver, "user1@tester.com", "ah1QNmgkEO");
-
-        clickArithmeticFunction(driver);
-    }
 
     public void clickArithmeticFunction(WebDriver driver) {
 
@@ -122,7 +115,7 @@ public class EntityArithmeticFunctionTest extends BaseTest {
     public void tc001() throws InterruptedException {
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         createNewRecord(driver);
 
         final int f1 = 12;
@@ -130,19 +123,18 @@ public class EntityArithmeticFunctionTest extends BaseTest {
 
         setValuesF1F2(driver, f1, f2);
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         valuesAssertEditMode(driver, f1, f2);
 
         clickSaveButton(driver);
     }
 
-    @Ignore
     @Test
     public void tc002 () {
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         clickMenuOfLastRecord(driver);
         clickViewMode(driver);
 
@@ -152,63 +144,59 @@ public class EntityArithmeticFunctionTest extends BaseTest {
         valuesAssertViewMode(driver, f1, f2);
     }
 
-    @Ignore
     @Test
     public void tc003() throws InterruptedException {
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         clickMenuOfLastRecord(driver);
         clickEditMode(driver);
 
         final int f1 = 24;
-        final int f2 = 6;
+        final int f2 = 8;
 
         setValuesF1F2(driver, f1, f2);
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         valuesAssertEditMode(driver, f1, f2);
 
         clickSaveButton(driver);
     }
 
-    @Ignore
     @Test
     public void tc004() {
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         clickMenuOfLastRecord(driver);
         clickViewMode(driver);
 
         final int f1 = 24;
-        final int f2 = 6;
+        final int f2 = 8;
 
         valuesAssertViewMode(driver, f1, f2);
     }
 
-    @Ignore
     @Test
     public void tc005() {
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         clickMenuOfLastRecord(driver);
         clickEditMode(driver);
 
         final int f1 = 24;
-        final int f2 = 6;
+        final int f2 = 8;
 
         valuesAssertEditMode(driver, f1, f2);
     }
 
-    @Ignore
     @Test
     public void tc006() {
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         clickMenuOfLastRecord(driver);
         clickEditMode(driver);
 
@@ -223,12 +211,11 @@ public class EntityArithmeticFunctionTest extends BaseTest {
         Assert.assertEquals(error.getText(), "Error saving entity");
     }
 
-    @Ignore
     @Test(priority=2)
     public void recordDelete(){
 
         WebDriver driver = getDriver();
-        preconditions(driver);
+        clickArithmeticFunction(driver);
         clickMenuOfLastRecord(driver);
         clickDelete(driver);
     }
