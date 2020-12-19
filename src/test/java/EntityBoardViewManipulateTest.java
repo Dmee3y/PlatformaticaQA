@@ -3,13 +3,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
+import runner.ProjectUtils;
 
 import java.util.UUID;
 
 public class EntityBoardViewManipulateTest extends BaseTest {
 
+    @Ignore
     @Test
     public void manipulateTest() {
 
