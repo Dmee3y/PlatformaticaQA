@@ -61,8 +61,8 @@ public class EntityImportTest extends BaseTest {
 
         cleanRecycleBin(driver, randomString);
 
-        WebElement userButton = driver.findElement((By.xpath("//a[@id='navbarDropdownProfile']")));
-        userButton.click();
+        WebElement userButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='navbarDropdownProfile']")));
+        ProjectUtils.click(driver, userButton);
 
         WebElement logoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Log out')]")));
         ProjectUtils.click(driver, logoutButton);
