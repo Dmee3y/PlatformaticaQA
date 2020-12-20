@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class EntityImportTest extends BaseTest {
 
-    @Test(invocationCount = 10)
+    @Test
     @Profile(profile = ProfileType.DEFAULT)
     public void deleteRecordFromEntityImport() throws InterruptedException {
 
