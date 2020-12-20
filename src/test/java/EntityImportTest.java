@@ -60,11 +60,11 @@ public class EntityImportTest extends BaseTest {
 
         cleanRecycleBin(driver, randomString);
 
-        WebElement userButton = driver.findElement((By.xpath("//a[@id='navbarDropdownProfile']")));
-        userButton.click();
+        WebElement userButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='navbarDropdownProfile']")));
+        ProjectUtils.click(driver, userButton);
 
         WebElement logoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Log out')]")));
-        logoutButton.click();
+        ProjectUtils.click(driver, logoutButton);
     }
 
     public String createRecordInEntityImport(WebDriver driver) throws InterruptedException {
