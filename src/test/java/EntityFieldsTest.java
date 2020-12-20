@@ -326,7 +326,7 @@ public class EntityFieldsTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "fieldInputNewRecordTest")
-    public void fieldsEditTest() {
+    public void fieldsEditTest() throws InterruptedException {
 
         final String newTitle = "Ky";
         final String newComments = "Goooood";
@@ -338,13 +338,17 @@ public class EntityFieldsTest extends BaseTest {
         WebElement sideBarField = driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/ul[1]/li[4]/a[1]/p[1]"));
         sideBarField.click();
 
-        WebElement createdRecordSandwich = driver.findElement(By.xpath("//tbody/tr[1]/td[11]/div[1]/button[1]"));
-        createdRecordSandwich.click();
+        WebElement createdRecordSandwich = getWait(5)
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//table//button[@aria-expanded='false']")));
+        ProjectUtils.click(driver, createdRecordSandwich);
+        Thread.sleep(500);
 
-        WebElement editField = driver.findElement(By.xpath("//tbody/tr[1]/td[11]/div[1]/ul[1]/li[2]/a[1]"));
+        WebElement editField = getWait(5)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@aria-expanded='true']/..//a[text() = 'edit']")));
         editField.click();
 
-        WebElement titleField = driver.findElement(By.xpath("//input[@id='title']"));
+        WebElement titleField = getWait(5)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='title']")));
         titleField.clear();
         titleField.sendKeys(newTitle);
 
