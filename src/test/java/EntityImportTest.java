@@ -8,6 +8,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 import runner.ProjectUtils;
+import runner.TestUtils;
 import runner.type.Profile;
 import runner.type.ProfileType;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 public class EntityImportTest extends BaseTest {
 
-    @Test
+    @Test(invocationCount = 10)
     @Profile(profile = ProfileType.DEFAULT)
     public void deleteRecordFromEntityImport() throws InterruptedException {
 
@@ -64,7 +65,7 @@ public class EntityImportTest extends BaseTest {
         userButton.click();
 
         WebElement logoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Log out')]")));
-        logoutButton.click();
+        ProjectUtils.click(driver, logoutButton);
     }
 
     public String createRecordInEntityImport(WebDriver driver) throws InterruptedException {
