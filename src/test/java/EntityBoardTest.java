@@ -102,7 +102,6 @@ public class EntityBoardTest extends BaseTest {
     }
 
     @Test
-
     public void editBoard() throws InterruptedException {
 
         WebDriver driver = getDriver();
