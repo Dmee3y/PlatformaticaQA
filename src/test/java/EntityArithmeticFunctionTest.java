@@ -26,11 +26,13 @@ public class EntityArithmeticFunctionTest extends BaseTest {
         createNewRecord.click();
     }
 
-    public void setValuesF1F2(WebDriver driver, int f1, int f2) {
+    public void setValuesF1F2(WebDriver driver, int f1, int f2) throws InterruptedException {
 
         WebElement inputF1 = driver.findElement(By.id("f1"));
         inputF1.clear();
         inputF1.sendKeys(String.valueOf(f1));
+
+        Thread.sleep(500);
 
         WebElement inputF2 = driver.findElement(By.id("f2"));
         inputF2.clear();
